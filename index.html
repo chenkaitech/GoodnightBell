@@ -1,140 +1,215 @@
-# Generate bilingual landing page for "Good Night Bell"
+# Recreate goodnightbell_site.html with #privacy and #support anchors and nav links.
 html = r"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Good Night Bell · 晚安铃</title>
-<meta name="description" content="Good Night Bell – one-tap bedtime ritual. 一键晚安，铃声与祝福同行。">
+<meta name="description" content="Good Night Bell · One tap, chime and a gentle quote. 晚安铃 · 一键晚安，铃声与签语。">
 <link rel="icon" href="favicon.ico">
 <style>
-:root{--bg:#0E1017;--surface:#14161E;--text:#E8EAF4;--text2:#B4B8C9;--violet:#A58CFF;}
-*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);font-family:ui-sans-serif,system-ui,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
-a{color:var(--violet);text-decoration:none}
-.container{max-width:980px;margin:0 auto;padding:40px 24px}
-nav{display:flex;justify-content:space-between;align-items:center}
-.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px}
-.brand img{width:38px;height:38px;border-radius:12px}
+:root{
+  --bg:#0F1219; --surface:#151926; --text:#F0F3FA; --text2:#BAC2D6; --accent:#FFD54F;
+  --accent2:#7DA6FF; --divider:rgba(255,255,255,.12);
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Helvetica, Arial, Noto Sans, "PingFang SC","Hiragino Sans GB","Microsoft Yahei",sans-serif;}
+a{color:var(--accent2);text-decoration:none}
+.container{max-width:1100px;margin:0 auto;padding:40px 24px}
+nav{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:700}
+.brand img.icon{width:40px;height:40px;border-radius:12px}
+.nav-links{display:flex;gap:18px;align-items:center}
+.nav-links a{color:var(--text2);font-weight:600}
+.nav-links a:hover{color:var(--text)}
 .lang-switch{display:flex;gap:8px;background:var(--surface);border-radius:12px;padding:6px}
 .lang-switch button{all:unset;cursor:pointer;padding:6px 14px;border-radius:10px;color:var(--text2);font-weight:600}
-.lang-switch button.active{background:var(--violet);color:#0E1017}
-.hero{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;margin-top:48px}
-.hero h1{margin:0 0 16px;font-size:38px;line-height:1.1}
-.hero p.lead{font-size:18px;color:var(--text2);margin:0 0 24px}
-.button{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:14px;font-weight:700;background:var(--violet);color:#0E1017;box-shadow:0 10px 30px rgba(165,140,255,.3)}
-.button.ghost{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.15)}
-.card{background:var(--surface);border-radius:20px;padding:24px;box-shadow:0 10px 28px rgba(0,0,0,.25)}
+.lang-switch button.active{background:var(--accent);color:#1A1400}
+.hero{display:grid;grid-template-columns:1.1fr 0.9fr;gap:36px;align-items:center;margin-top:40px}
+.hero h1{font-size:40px;line-height:1.1;margin:0 0 16px}
+.hero p.lead{color:var(--text2);font-size:18px;margin:0 0 24px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.button{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:#1A1400;font-weight:700;
+  padding:14px 22px;border-radius:14px;box-shadow:0 10px 30px rgba(255,213,79,.25);}
+.button.ghost{background:transparent;color:var(--text);border:1px solid var(--divider)}
+.card{background:var(--surface);border-radius:20px;padding:24px;box-shadow:0 10px 30px rgba(0,0,0,.25);}
 .section{margin-top:80px}
 .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
-table{width:100%;border-collapse:collapse;margin-top:16px;color:var(--text2);font-size:15px}
-td,th{padding:10px;border-bottom:1px solid rgba(255,255,255,.08)}
-th{color:var(--text);text-align:left}
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
-.gallery img{width:100%;border-radius:18px;box-shadow:0 10px 32px rgba(0,0,0,.35);aspect-ratio:9/19.5;object-fit:cover;background:#0b0d14}
-.footer{margin-top:80px;font-size:14px;color:var(--text2);border-top:1px solid rgba(255,255,255,.08);padding:32px 0}
-@media(max-width:900px){.hero{grid-template-columns:1fr}}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px}
+.tag{display:inline-block;padding:6px 10px;border-radius:8px;font-size:13px;background:rgba(255,213,79,.16);color:var(--accent)}
+.sample{width:100%;border-radius:18px;box-shadow:0 12px 40px rgba(0,0,0,.35);background:#0a0d14;aspect-ratio:9/19.5;object-fit:cover}
+.footer{margin-top:80px;color:var(--text2);font-size:14px;border-top:1px solid var(--divider);padding:32px 0}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.gallery img{width:100%;border-radius:18px;box-shadow:0 12px 40px rgba(0,0,0,.35);background:#0a0d14;aspect-ratio:9/19.5;object-fit:cover}
+.moon{width:64px;height:64px;border-radius:50%;background:radial-gradient(circle at 30% 30%, #FFE07A, #F3C32E 60%, #B68A10 100%);box-shadow:0 0 40px rgba(255,213,79,.35);}
+@media (max-width:960px){ .hero{grid-template-columns:1fr} }
 </style>
 </head>
 <body>
 <div class="container">
-<nav>
-  <div class="brand"><img src="icon.png" alt="icon"><span>Good Night Bell · 晚安铃</span></div>
-  <div class="lang-switch">
-    <button id="btn-en" class="active">EN</button><button id="btn-zh">中文</button>
-  </div>
-</nav>
-
-<section class="hero">
-  <div>
-    <h1 data-en="One-tap good night ritual" data-zh="一键晚安 小而美的仪式"></h1>
-    <p class="lead" data-en="Press the bell, hear a soothing chime, read a gentle wish, drift into sweet sleep."
-       data-zh="轻触铃声按钮，听一段舒缓晚安铃，读一句温柔祝福，让美梦随之而来。"></p>
-    <div style="display:flex;gap:12px;flex-wrap:wrap">
-      <span class="button" data-en="Coming soon" data-zh="即将上架"></span>
-      <a href="#features" class="button ghost" data-en="Learn more" data-zh="了解功能"></a>
+  <nav>
+    <div class="brand">
+      <img class="icon" src="app_icon128x128.png" alt="Good Night Bell icon">
+      <span>Good Night Bell · 晚安铃</span>
     </div>
-  </div>
-  <div class="card"><img src="screenshot1.png" data-en-src="screenshot1.png" data-zh-src="screenshot1_zh.png" alt="screenshot" style="width:100%;border-radius:14px"></div>
-</section>
+    <div style="display:flex;gap:16px;align-items:center">
+      <div class="nav-links">
+        <a href="#features" data-en="Features" data-zh="功能"></a>
+        <a href="#screens" data-en="Screenshots" data-zh="界面"></a>
+        <a href="#privacy" data-en="Privacy" data-zh="隐私"></a>
+        <a href="#support" data-en="Support" data-zh="支持"></a>
+      </div>
+      <div class="lang-switch">
+        <button id="btn-en" class="active">English</button>
+        <button id="btn-zh">中文</button>
+      </div>
+    </div>
+  </nav>
 
-<section id="features" class="section">
-  <h2 data-en="MVP feature list" data-zh="MVP 功能列表"></h2>
-  <table>
-    <thead>
-      <tr><th data-en="Module" data-zh="模块"></th><th data-en="Description" data-zh="功能说明"></th></tr>
-    </thead>
-    <tbody>
-      <tr><td data-en="Home screen" data-zh="首页主界面"></td><td data-en="Minimal design with one centered 'Good Night' button." data-zh="极简首页设计，居中一个「一键晚安」按钮。"></td></tr>
-      <tr><td data-en="One-tap action" data-zh="一键晚安动作"></td><td data-en="Plays a random soothing chime (2-3 options) and shows a bedtime quote." data-zh="用户点击后随机播放 2-3 种晚安铃声之一，并展示一句晚安心语。"></td></tr>
-      <tr><td data-en="Quote library" data-zh="签语库"></td><td data-en="Approx. 1 000 high-quality good-night quotes built-in." data-zh="内置约 1000 条高质量晚安心语。"></td></tr>
-    </tbody>
-  </table>
-</section>
-
-<section class="section">
-  <h2 data-en="Screenshots" data-zh="界面预览"></h2>
-  <p class="lead" data-en="Replace images below with real app screenshots." data-zh="将下方图片替换为真实应用截图。"></p>
-  <div class="gallery">
-    <img src="screenshot1.png" data-en-src="screenshot1.png" data-zh-src="screenshot1_zh.png" alt="shot 1">
-    <img src="screenshot2.png" data-en-src="screenshot2.png" data-zh-src="screenshot2_zh.png" alt="shot 2">
-    <img src="screenshot3.png" data-en-src="screenshot3.png" data-zh-src="screenshot3_zh.png" alt="shot 3">
-    <img src="screenshot4.png" data-en-src="screenshot4.png" data-zh-src="screenshot4_zh.png" alt="shot 4">
-  </div>
-</section>
-
-<section class="section">
-  <div class="grid-2">
-    <div class="card">
-      <h2 id="privacy" data-en="Privacy" data-zh="隐私"></h2>
-      <p class="text2" data-en="All data stays on-device. No trackers. We ask for no photos, contacts, or location."
-         data-zh="所有数据仅保存在本机，零追踪。我们不会请求访问照片、联系人或位置信息。"></p>
+  <section class="hero">
+    <div>
+      <div class="moon" aria-hidden="true"></div>
+      <h1 data-en="One tap. Chime. Good night."
+          data-zh="一键晚安 · 铃声响起 · 祝你安睡"></h1>
+      <p class="lead" data-en="A minimalist ritual before sleep. Tap once to play a soothing chime and receive a gentle good‑night quote."
+         data-zh="睡前的一次小小仪式。轻轻一点，播放舒缓的晚安铃声，同时呈现一句温暖的晚安心语。"></p>
+      <div class="cta">
+        <a href="#" class="button" data-en="Coming soon" data-zh="即将上架"></a>
+        <a href="#features" class="button ghost" data-en="Learn more" data-zh="了解功能"></a>
+      </div>
     </div>
     <div class="card">
-      <h2 id="support" data-en="Support" data-zh="支持"></h2>
-      <p class="text2" data-en="Questions or feedback? Email or open an issue on GitHub."
-         data-zh="有问题或反馈？欢迎邮件或在 GitHub 提交 Issue。"></p>
-      <p><a href="mailto:support@example.com">support@example.com</a></p>
-      <p>
-        <a href="https://github.com/chenkaitech/GoodNightBell" target="_blank" data-en="GitHub Repo" data-zh="GitHub 仓库"></a><br>
-        <a href="https://github.com/chenkaitech/GoodNightBell/issues" target="_blank" data-en="Report an issue" data-zh="提交问题"></a>
-      </p>
+      <img class="sample" src="gnb_screen1.png" data-en-src="gnb_screen1.png" data-zh-src="gnb_screen1_zh.png" alt="App screenshot 1">
     </div>
-  </div>
-</section>
+  </section>
 
-<footer class="footer">
-  <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px">
-    <span><strong>Good Night Bell · 晚安铃</strong></span>
-    <span data-en="© 2025 Your Studio. All rights reserved." data-zh="© 2025 你的工作室，保留所有权利。"></span>
-  </div>
-</footer>
+  <section id="features" class="section">
+    <h2 data-en="MVP Features" data-zh="MVP 版本功能"></h2>
+    <div class="grid-3" style="margin-top:24px">
+      <div class="card">
+        <div class="tag" data-en="Home" data-zh="首页"></div>
+        <h3 style="margin:12px 0" data-en="Minimal home, one giant button" data-zh="极简首页 · 一个大按钮"></h3>
+        <p class="text2" data-en="A single centered “Good Night” button for zero‑friction use."
+           data-zh="居中一个「一键晚安」按钮，零阻力操作。"></p>
+      </div>
+      <div class="card">
+        <div class="tag" data-en="One‑tap action" data-zh="一键动作"></div>
+        <h3 style="margin:12px 0" data-en="Chime + quote" data-zh="铃声 + 签语"></h3>
+        <p class="text2" data-en="Tap to play a built‑in chime (random from 2–3 tones) and show a good‑night quote."
+           data-zh="点击后立即播放内置晚安铃声（2~3 种中随机），并展示一句晚安心语。"></p>
+      </div>
+      <div class="card">
+        <div class="tag" data-en="Quote library" data-zh="签语库"></div>
+        <h3 style="margin:12px 0" data-en="1,000 curated quotes" data-zh="约 1000 条高质量签语"></h3>
+        <p class="text2" data-en="A hand‑picked collection of comforting lines for peaceful sleep."
+           data-zh="精选整理，句句温柔，助你安然入睡。"></p>
+      </div>
+    </div>
+
+    <div class="grid-3" style="margin-top:24px">
+      <div class="card">
+        <div class="tag" data-en="Optional" data-zh="可选"></div>
+        <h3 style="margin:12px 0" data-en="Nightly reminder" data-zh="睡前提醒"></h3>
+        <p class="text2" data-en="Set a gentle reminder at your preferred time."
+           data-zh="在你设定的时间，轻声提醒“该说晚安了”。"></p>
+      </div>
+      <div class="card">
+        <div class="tag" data-en="Share" data-zh="分享"></div>
+        <h3 style="margin:12px 0" data-en="Shareable card" data-zh="晚安分享卡片"></h3>
+        <p class="text2" data-en="Export the quote as a beautiful image for friends or social media."
+           data-zh="将签语导出为精美海报，与朋友或社交网络分享。"></p>
+      </div>
+      <div class="card">
+        <div class="tag" data-en="History" data-zh="历史"></div>
+        <h3 style="margin:12px 0" data-en="Simple log" data-zh="简易记录"></h3>
+        <p class="text2" data-en="Optional local history of the last rings and quotes."
+           data-zh="可选地保存最近的铃声与签语记录，仅存本机。"></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="screens" class="section">
+    <h2 data-en="Screenshots" data-zh="界面预览"></h2>
+    <p class="lead" data-en="Replace the four images below with your actual screenshots."
+       data-zh="将下方四张占位图替换为你的真实截图。"></p>
+    <div class="gallery" style="margin-top:16px">
+      <img src="gnb_screen1.png" data-en-src="gnb_screen1.png" data-zh-src="gnb_screen1_zh.png" alt="s1">
+      <img src="gnb_screen2.png" data-en-src="gnb_screen2.png" data-zh-src="gnb_screen2_zh.png" alt="s2">
+      <img src="gnb_screen3.png" data-en-src="gnb_screen3.png" data-zh-src="gnb_screen3_zh.png" alt="s3">
+      <img src="gnb_screen4.png" data-en-src="gnb_screen4.png" data-zh-src="gnb_screen4_zh.png" alt="s4">
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="grid-2">
+      <div class="card">
+        <h2 id="privacy" data-en="Privacy" data-zh="隐私"></h2>
+        <p class="text2" data-en="Good Night Bell is privacy‑first. Your data stays on your device. No account is required."
+           data-zh="晚安铃以隐私为先。数据默认仅保存在你的设备上，无需注册账号。"></p>
+        <ul style="margin:12px 0 0 18px; color: var(--text2); line-height:1.7">
+          <li data-en="We do not request access to your contacts, location, photos, or microphone."
+              data-zh="我们不会请求访问您的联系人、位置信息、照片或麦克风。"></li>
+          <li data-en="We do not track your device identifiers or behavior data."
+              data-zh="我们不会追踪您的设备标识或行为数据。"></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2 id="support" data-en="Support" data-zh="支持"></h2>
+        <p class="text2" data-en="Have questions or feedback? Email us or open an issue on GitHub."
+           data-zh="有问题或建议？欢迎邮件联系，或在 GitHub 提交 Issue。"></p>
+        <p><a href="mailto:support@example.com">support@example.com</a></p>
+        <p>
+          <a href="https://github.com/chenkaitech/GoodNightBell" target="_blank" rel="noopener"
+             data-en="GitHub Repository" data-zh="GitHub 仓库"></a><br>
+          <a href="https://github.com/chenkaitech/GoodNightBell/issues" target="_blank" rel="noopener"
+             data-en="Report an issue on GitHub" data-zh="在 GitHub 提交问题"></a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="grid-2">
+      <div>
+        <strong>Good Night Bell · 晚安铃</strong><br>
+        <span data-en="© 2025 Your Studio. All rights reserved."
+              data-zh="© 2025 你的工作室。保留所有权利。"></span>
+      </div>
+      <div style="text-align:right">
+        <a href="#privacy" data-en="Privacy Policy" data-zh="隐私政策"></a> ·
+        <a href="#support" data-en="Support" data-zh="支持"></a>
+      </div>
+    </div>
+  </footer>
 </div>
 
 <script>
 function swapLangImages(lang){
   document.querySelectorAll("img[data-en-src]").forEach(img=>{
-    const src = img.getAttribute(lang==="zh"?"data-zh-src":"data-en-src");
-    if(src) img.setAttribute("src",src);
+    const src = img.getAttribute(lang==="zh" ? "data-zh-src" : "data-en-src");
+    if(src) img.setAttribute("src", src);
   });
 }
 function setLang(lang){
   document.querySelectorAll("[data-en]").forEach(el=>{
-    const txt = el.getAttribute(lang==="zh"?"data-zh":"data-en");
-    if(txt!==null) el.textContent=txt;
+    const text = el.getAttribute(lang === "zh" ? "data-zh" : "data-en");
+    if(text!==null){ el.textContent = text; }
   });
-  document.getElementById("btn-en").classList.toggle("active",lang==="en");
-  document.getElementById("btn-zh").classList.toggle("active",lang==="zh");
+  document.getElementById("btn-en").classList.toggle("active", lang==="en");
+  document.getElementById("btn-zh").classList.toggle("active", lang==="zh");
+  localStorage.setItem("gnb-lang", lang);
   swapLangImages(lang);
-  localStorage.setItem("gnb-lang",lang);
 }
 document.getElementById("btn-en").onclick=()=>setLang("en");
 document.getElementById("btn-zh").onclick=()=>setLang("zh");
-setLang(localStorage.getItem("gnb-lang")||(navigator.language.startsWith("zh")?"zh":"en"));
+const saved = localStorage.getItem("gnb-lang") || (navigator.language.startsWith("zh")?"zh":"en");
+setLang(saved);
 </script>
 </body>
 </html>
 """
-out="/mnt/data/goodnightbell_site.html"
-with open(out,"w",encoding="utf-8") as f:
+out_path = "/mnt/data/goodnightbell_site.html"
+with open(out_path,"w",encoding="utf-8") as f:
     f.write(html)
-out
+out_path
